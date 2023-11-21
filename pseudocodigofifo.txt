@@ -1,0 +1,34 @@
+
+Cola supermercado:
+    Primerapersona: Nodo ultimapersona: Nodo
+
+Estructura Nodo:
+    Dato
+    Siguiente: Nodo
+
+Procedimiento Encolar(persona):
+    nuevoNodo = CrearNodo(persona)
+    Siultimapersona es nulo:
+        Primerapersona = nuevoNodo
+    ultimapersona = nuevoNodo
+    Sino:
+        ultimapersona.Siguiente = nuevoNodo
+     ultimapersona = nuevoNodo
+Procedimiento Desencolar():
+    Si Primerapersona es no nulo:
+        datoDesencolado = Primerapersona.Dato
+        Primerapersona = Primerapersona.Siguiente
+        Si Primerapersona es nulo:
+     ultimapersona = nulo
+        Devolver datoDesencolado
+    Sino:
+      Devolver nulo
+
+Función Frente():
+    Si Primerapersona es no nulo:
+       Devolver Primerapersona.Dato
+    Sino:
+     Devolver "la cola se quedo vacia"
+
+
+        

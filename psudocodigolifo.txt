@@ -1,0 +1,24 @@
+Estructura EvacuacionAvion:
+    Tope: Nodo
+
+Estructura Nodo:
+    Pasajero
+    Siguiente: Nodo
+
+Procedimiento EmbarcarPasajero(nombrePasajero):
+    nuevoNodo = CrearNodo(nombrePasajero)
+    nuevoNodo.Siguiente = Tope
+    Tope = nuevoNodo
+
+Procedimiento DesembarcarPasajero():
+    Si Tope no es nulo:
+        pasajeroDesembarcado = Tope.Pasajero
+        Tope = Tope.Siguiente
+        Mostrar "Pasajero " + pasajeroDesembarcado + " ha desembarcado"
+    Szno:
+        Mostrar "La evacuación está completa"
+Función UltimoPasajero():
+    Si Tope no es nulo:
+        Devolver Tope.Pasajero
+    Sino:
+        Devolver "No hay pasajeros en la evacuación"

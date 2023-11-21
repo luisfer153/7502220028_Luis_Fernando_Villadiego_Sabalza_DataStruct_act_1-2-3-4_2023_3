@@ -1,0 +1,31 @@
+Estructura Ropa:
+  marca=gushi:
+Estructura NodoRopa:
+    Dato: Ropa
+ Siguiente: NodoRopa
+Estructura PilaRopa:
+    Tope: NodoRopa
+Estructura Canasta:
+    Pila: PilaRopa
+Procedimiento InicializarCanasta():
+    Canasta.Pila.Tope = Nulo
+Procedimiento ApilarRopa(tipo, color):
+    nuevaRopa = CrearRopa(tipo, color)
+  nuevoNodo = CrearNodoRopa(nuevaRopa)
+    nuevoNodo.Siguiente = Canasta.Pila.Tope
+    Canasta.Pila.Tope = nuevoNodo
+
+Procedimiento DesapilarRopa():
+    Si Canasta.Pila.Tope es no nulo:
+     ropaDesapilada = Canasta.Pila.Tope.Dato
+        Canasta.Pila.Tope = Canasta.Pila.Tope.Siguiente
+       Mostrar "Se ha sacado una prenda de la canasta:", ropaDesapilada.Tipo, ropaDesapilada.Color
+    Sino:
+        Mostrar "La canasta está vacía"
+
+Función CimaCanasta():
+    Si Canasta.Pila.Tope es no nulo:
+  Devolver Canasta.Pila.Tope.Dato
+    Sino:
+        Devolver nulo
+
