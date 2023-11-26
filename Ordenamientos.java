@@ -104,7 +104,8 @@ static void imprimirArreglo(int[] arreglo) {
 //ordenamiento quick sort//
 //consiste en establecer un dato como punto de referencia para posteriormente
 //compararlo con sus adyacentes de manera que se acomodora todos los valores mas pequeños a la izquierda
-//y mas grandes a la derecha, haciendo esto en los otros subconjuntos para llegar al orden,adicional a esto
+//y mas grandes a la derecha, haciendo esto en los otros subconjuntos para llegar al orden,
+//adicional a esto
 //ya que puede dar el caso que el valor quede en el principio o al final del arreglo, se quedara sin un
 //lado que comparar por lo que tambien tiene una condicional que arregla esto//
 
@@ -120,7 +121,6 @@ private static void quickSortAux(int[] arr, int low, int high) {
         quickSortAux(arr, pi + 1, high);
     }
 }
-
 private static int partition(int[] arr, int low, int high) {
     int pivot = arr[high];
 

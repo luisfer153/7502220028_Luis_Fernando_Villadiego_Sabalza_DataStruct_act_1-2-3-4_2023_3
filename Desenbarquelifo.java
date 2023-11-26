@@ -19,7 +19,7 @@ public class Desenbarquelifo {
         desembarcar.imprimir();
 
         desembarcar.desapilar();
-
+        
         System.out.println("--orden de desembarque lifo--");
         desembarcar.imprimir();
 
