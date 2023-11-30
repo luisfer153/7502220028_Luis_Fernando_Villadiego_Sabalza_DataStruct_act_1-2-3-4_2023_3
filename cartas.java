@@ -67,9 +67,71 @@ public class cartas  {
             manooponente.add(cartaDrawn);
             System.out.println("oponente ha tomado una carta");
         } else {
-            System.out.println("La baraja está vacía.");
+            System.out.println("tu baraja se quedo sin cartas no puedes comer mas");
         }
     }
+
+    public static void mostrarbarajaj(ArrayList<cartas> manojugador ){
+
+        for (int i = 0; i < manojugador.size(); i++) {
+            System.out.println(manojugador.get(i));
+    }
+}
+     
+    public static void lobbyopciones() {
+      
+       System.out.println("//tus cartas//");
+
+    }
+
+    public static void atacarj(ArrayList<cartas> manojugador, ArrayList<cartas> manooponente) {
+        Scanner escanerataque = new Scanner(System.in);
+    
+        System.out.println("Selecciona una carta para atacar:");
+        mostrarbarajaj(manojugador); 
+    
+        int seleccion = escanerataque.nextInt();
+    
+        if (seleccion >= 0 && seleccion < manojugador.size()) {
+            cartas cartaAtacante = manojugador.get(seleccion);
+    
+            int ataque = cartaAtacante.obtenerPropiedadNumerica("ataque");
+    
+            System.out.println("Selecciona una carta del oponente para atacar:");
+            mostrarbarajaj(manooponente);
+    
+            int seleccionOponente = escanerataque.nextInt();
+            if (seleccionOponente >= 0 && seleccionOponente < manooponente.size()) {
+                cartas cartaOponente = manooponente.get(seleccionOponente);
+                int vidaOponente = cartaOponente.obtenerPropiedadNumerica("vida");
+                vidaOponente -= ataque;
+    
+                cartaOponente.agregarPropiedadNumerica("vida", vidaOponente);
+    
+                System.out.println("Has atacado a la carta del oponente. Vida restante: " + vidaOponente);
+            } else {
+                System.out.println("Selección del oponente no válida.");
+            }
+        } else {
+            System.out.println("Selección no válida.");
+        }
+    }
+
+    public static void verificarVida(ArrayList<cartas> mano) {
+        Iterator<cartas> iterator = mano.iterator();
+
+        while (iterator.hasNext()) {
+            cartas carta = iterator.next();
+            int vida = carta.obtenerPropiedadNumerica("vida");
+
+            if (vida <= 0) {
+                System.out.println("La carta '" + carta.getNombre() + "' se quedo sin vida");
+                iterator.remove();
+            }
+        }
+    }
+
+    
 
     @Override
     public String toString() {
@@ -142,6 +204,7 @@ baraja2.add(caporoacuatico);
 baraja2.add(campoacuatico);
 
 
+
 Scanner teclado = new Scanner(System.in);
 System.out.println("selecciona tu baraja");
 int seleeccion = 0;
@@ -160,6 +223,25 @@ if (seleeccion == 1) {
 }
 
 
+while (!manojugador.isEmpty() && !manooponente.isEmpty()) {
+    
+cartas.lobbyopciones();
+cartas.atacarj(manojugador, manooponente);
+cartas.mostrarbarajaj(manojugador);
+cartas.draw(baraja1, manojugador);
+cartas.drawr(baraja2, manooponente);
+cartas.verificarVida(manooponente);
+cartas.verificarVida(manojugador);
 
+
+}
+
+
+if (manojugador.isEmpty()) {
+
+    System.out.println("te has quedado sin cartas");
+    
+}
+else{System.out.println("oponente sin cartas has ganado");}
 }
 }
